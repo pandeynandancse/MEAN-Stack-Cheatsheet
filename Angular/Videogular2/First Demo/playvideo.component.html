@@ -1,0 +1,119 @@
+   <div class="main-wrapper">
+      <!-- Courses Enroll Start -->
+      <div class="section">
+
+          <!-- Courses Enroll Wrapper Start -->
+          <div class="courses-enroll-wrapper">
+
+              <!-- Courses Video Player Start -->
+              <div class="courses-video-player">
+
+                <div class="vidcontainer">
+                                                    <vg-player style="width:100%;">
+                                                    <vg-overlay-play></vg-overlay-play>
+                                                    <vg-buffering></vg-buffering>
+                                                    
+                                                    <vg-controls  style="height:36px !important;" [vgAutohide]="true" [vgAutohideTime]="1.5">
+                                                        <vg-play-pause></vg-play-pause>
+                                                        <vg-playback-button></vg-playback-button>
+                                                        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                                                    
+                                                        <vg-scrub-bar  style="pointer-events: none;">
+                                                            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                                            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                                                        </vg-scrub-bar>
+                                                    
+                                                        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                                                    
+                                                        <vg-track-selector></vg-track-selector>
+                                                        <vg-mute></vg-mute>
+                                                        <vg-volume></vg-volume>
+                                                    
+                                                        <vg-fullscreen></vg-fullscreen>
+                                                    </vg-controls>
+                                                    
+                                                    <video style="width:100%;" #myMedia [vgMedia]="myMedia" id="myVideo" preload="auto"  [src]="video_url" type='video/mp4'> </video>
+                                                    </vg-player>
+                </div>
+
+                 <!-- Courses Enroll Content Start -->
+                 <div class="courses-enroll-content"> 
+                     <br>
+                     <h2 class="title">Course:{{all_courses[0]['values'][0]['values'][0]['title']}}.</h2>
+                </div>
+                  
+              </div>
+              <!-- Courses Video Player End -->
+
+
+
+              
+              <!-- Courses Video Playlist Start -->
+              <div class="courses-video-playlist">
+                  <div class="playlist-title">
+                      <h3 class="title">Course Content</h3>
+                      <!-- <span>80 Lessons (8h 15m)</span> -->
+                  </div>
+
+                  <!-- Video Playlist Start  -->
+                  <div class="video-playlist">
+                      <div class="accordion" id="videoPlaylist">
+
+                          <!-- Accordion Items Start  -->
+                          <!--iterate over each chapter -->
+                            <ng-template ngFor let-item [ngForOf]="createRange(all_courses[0]['values'].length)" let-currentIndex="index" *ngIf="all_courses.length>0">
+                              <!--Video Playlist - Chapters Loop Starts-->     
+                               <!-- <p>createRange</p> -->
+                                     <!-- Accordion Items Start  -->
+                               <div class="accordion-item">
+                   
+                                   <button class="collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne' + currentIndex">
+                                       <p>Chapter {{currentIndex+1}}: {{all_courses[0]['values'][currentIndex]['values'][0]['chapter_title']}} </p>
+                                       <!-- <span class="total-duration">01 hour 48 minutes</span> -->
+                                   </button>
+                                    
+                                   <div  id="{{'collapseOne' + currentIndex}}" class="accordion-collapse collapse" data-bs-parent="#videoPlaylist" >
+                                       <nav class="vids" >
+                                           <!--iterate over each chapter's topic -->
+                                           <ng-template ngFor let-item1 [ngForOf]="Range(all_courses[0]['values'][currentIndex]['values'].length)" let-InnerIndex="index">
+                                                       <!-- <p>Range</p> -->
+                                                       <a class="link" (click)="updatevideo(all_courses[0]['values'][currentIndex]['values'][InnerIndex]['full_vid_url'])">
+                                                           <p>{{InnerIndex+1}}.{{all_courses[0]['values'][currentIndex]['values'][InnerIndex]['topic_title']}} </p>
+                                                       </a>      
+                                           </ng-template>
+                                           <!--Video Playlist - Topics Loop Ends--> 
+                   
+                                       </nav>
+                                   </div>
+                                 
+                               </div>
+                               <!-- Accordion Items End  -->
+                   
+                               </ng-template>
+                          <!-- </div> -->
+                          <!-- Accordion Items End  -->
+
+                      </div>
+                  </div>
+                  <!-- Video Playlist End  -->
+
+              </div>
+              <!-- Courses Video Playlist End -->
+
+          </div>
+          <!-- Courses Enroll Wrapper End -->
+
+      </div>
+      <!-- Courses Enroll End -->
+
+     
+
+
+      <!--Back To Start-->
+      <a href="#" class="back-to-top">
+          <i class="icofont-simple-up"></i>
+      </a>
+      <!--Back To End-->
+
+  </div>
+
