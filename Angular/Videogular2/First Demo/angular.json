@@ -1,0 +1,15 @@
+build:{  "styles": [
+              "node_modules/videogular2/fonts/videogular.css",
+              "src/styles.css"
+             
+            ]
+      }
+
+
+
+test:{  "styles": [
+              "node_modules/videogular2/fonts/videogular.css",
+              "src/styles.css"
+             
+            ]
+      }
